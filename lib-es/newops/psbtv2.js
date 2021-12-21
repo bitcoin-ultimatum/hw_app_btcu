@@ -34,6 +34,8 @@ export var psbtGlobal;
     psbtGlobal[psbtGlobal["INPUT_COUNT"] = 4] = "INPUT_COUNT";
     psbtGlobal[psbtGlobal["OUTPUT_COUNT"] = 5] = "OUTPUT_COUNT";
     psbtGlobal[psbtGlobal["TX_MODIFIABLE"] = 6] = "TX_MODIFIABLE";
+    psbtGlobal[psbtGlobal["TX_VALIDATOR_REG"] = 7] = "TX_VALIDATOR_REG";
+    psbtGlobal[psbtGlobal["TX_VALIDATOR_VOTE"] = 8] = "TX_VALIDATOR_VOTE";
     psbtGlobal[psbtGlobal["VERSION"] = 251] = "VERSION";
 })(psbtGlobal || (psbtGlobal = {}));
 export var psbtIn;
@@ -106,6 +108,22 @@ var PsbtV2 = /** @class */ (function () {
         var _a;
         return (_a = this.getGlobalOptional(psbtGlobal.FALLBACK_LOCKTIME)) === null || _a === void 0 ? void 0 : _a.readUInt32LE(0);
     };
+    ////////BTCU////////
+    PsbtV2.prototype.setGlobalValidatorRegEmpty = function () {
+        this.setGlobal(psbtGlobal.TX_VALIDATOR_REG, uint8(0));
+    };
+    PsbtV2.prototype.getGlobalValidatorRegEmpty = function () {
+        var _a;
+        return (_a = this.getGlobalOptional(psbtGlobal.TX_VALIDATOR_REG)) === null || _a === void 0 ? void 0 : _a.readUInt8(0);
+    };
+    PsbtV2.prototype.setGlobalValidatorVoteEmpty = function () {
+        this.setGlobal(psbtGlobal.TX_VALIDATOR_VOTE, uint8(0));
+    };
+    PsbtV2.prototype.getGlobalValidatorVoteEmpty = function () {
+        var _a;
+        return (_a = this.getGlobalOptional(psbtGlobal.TX_VALIDATOR_VOTE)) === null || _a === void 0 ? void 0 : _a.readUInt8(0);
+    };
+    ///////////////////
     PsbtV2.prototype.setGlobalInputCount = function (inputCount) {
         this.setGlobal(psbtGlobal.INPUT_COUNT, varint(inputCount));
     };
@@ -483,6 +501,11 @@ function b() {
 function set(map, keyType, keyData, value) {
     var key = new Key(keyType, keyData);
     map.set(key.toString(), value);
+}
+function uint8(n) {
+    var b = Buffer.alloc(1);
+    b.writeUInt8(n, 0);
+    return b;
 }
 function uint32LE(n) {
     var b = Buffer.alloc(4);

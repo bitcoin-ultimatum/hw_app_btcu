@@ -6,7 +6,7 @@ import { BufferWriter } from "../buffertools";
  * https://github.com/bitcoin/bips/blob/master/bip-0174.mediawiki#transaction-extractor).
  */
 export function extract(psbt) {
-    var _a, _b;
+    var _a, _b, _c, _d;
     var tx = new BufferWriter();
     tx.writeUInt32(psbt.getGlobalTxVersion());
     var isSegwit = !!psbt.getInputWitnessUtxo(0);
@@ -33,6 +33,8 @@ export function extract(psbt) {
     }
     tx.writeSlice(witnessWriter.buffer());
     tx.writeUInt32((_b = psbt.getGlobalFallbackLocktime()) !== null && _b !== void 0 ? _b : 0);
+    tx.writeUInt8((_c = psbt.getGlobalValidatorRegEmpty()) !== null && _c !== void 0 ? _c : 0);
+    tx.writeUInt8((_d = psbt.getGlobalValidatorVoteEmpty()) !== null && _d !== void 0 ? _d : 0);
     return tx.buffer();
 }
 //# sourceMappingURL=psbtExtractor.js.map

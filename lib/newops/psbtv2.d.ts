@@ -5,6 +5,8 @@ export declare enum psbtGlobal {
     INPUT_COUNT = 4,
     OUTPUT_COUNT = 5,
     TX_MODIFIABLE = 6,
+    TX_VALIDATOR_REG = 7,
+    TX_VALIDATOR_VOTE = 8,
     VERSION = 251
 }
 export declare enum psbtIn {

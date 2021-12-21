@@ -107,6 +107,11 @@ export default class Btc {
      */
     createPaymentTransactionNew(arg: CreateTransactionArg): Promise<string>;
     /**
+     * Old implementation
+     * @param arg
+     */
+    createPaymentTransactionOld(arg: CreateTransactionArg): Promise<string>;
+    /**
      * To obtain the signature of multisignature (P2SH) inputs, call signP2SHTransaction_async with the folowing parameters
      * @param inputs is an array of [ transaction, output_index, redeem script, optional sequence ] where
      * * transaction is the previously computed transaction object for this UTXO

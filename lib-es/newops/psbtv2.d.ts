@@ -5,6 +5,8 @@ export declare enum psbtGlobal {
     INPUT_COUNT = 4,
     OUTPUT_COUNT = 5,
     TX_MODIFIABLE = 6,
+    TX_VALIDATOR_REG = 7,
+    TX_VALIDATOR_VOTE = 8,
     VERSION = 251
 }
 export declare enum psbtIn {
@@ -57,6 +59,10 @@ export declare class PsbtV2 {
     getGlobalTxVersion(): number;
     setGlobalFallbackLocktime(locktime: number): void;
     getGlobalFallbackLocktime(): number | undefined;
+    setGlobalValidatorRegEmpty(): void;
+    getGlobalValidatorRegEmpty(): number | undefined;
+    setGlobalValidatorVoteEmpty(): void;
+    getGlobalValidatorVoteEmpty(): number | undefined;
     setGlobalInputCount(inputCount: number): void;
     getGlobalInputCount(): number;
     setGlobalOutputCount(outputCount: number): void;

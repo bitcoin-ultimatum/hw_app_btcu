@@ -45,7 +45,7 @@ import { extract } from "./newops/psbtExtractor";
 import { finalize } from "./newops/psbtFinalizer";
 import { psbtIn, PsbtV2 } from "./newops/psbtv2";
 import { serializeTransaction } from "./serializeTransaction";
-var newSupportedApps = ["Bitcoin", "Bitcoin Test"];
+var newSupportedApps = ["Bitcoin", "Bitcoin Test", "BTCU"];
 export function canSupportApp(appAndVersion) {
     return (newSupportedApps.includes(appAndVersion.name) &&
         semver.major(appAndVersion.version) >= 2);
@@ -215,6 +215,8 @@ var BtcNew = /** @class */ (function () {
                             // The signer will assume locktime 0 if unset
                             psbt.setGlobalFallbackLocktime(arg.lockTime);
                         }
+                        psbt.setGlobalValidatorRegEmpty();
+                        psbt.setGlobalValidatorVoteEmpty();
                         psbt.setGlobalInputCount(inputCount);
                         psbt.setGlobalPsbtVersion(2);
                         psbt.setGlobalTxVersion(2);

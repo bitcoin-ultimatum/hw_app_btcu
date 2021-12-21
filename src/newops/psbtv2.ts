@@ -13,6 +13,8 @@ export enum psbtGlobal {
   INPUT_COUNT = 0x04,
   OUTPUT_COUNT = 0x05,
   TX_MODIFIABLE = 0x06,
+  TX_VALIDATOR_REG = 0x07,
+  TX_VALIDATOR_VOTE = 0x08,
   VERSION = 0xfb,
 }
 export enum psbtIn {
