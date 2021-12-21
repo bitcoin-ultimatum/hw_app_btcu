@@ -57,6 +57,10 @@ export declare class PsbtV2 {
     getGlobalTxVersion(): number;
     setGlobalFallbackLocktime(locktime: number): void;
     getGlobalFallbackLocktime(): number | undefined;
+    setGlobalValidatorRegEmpty(): void;
+    getGlobalValidatorRegEmpty(): number | undefined;
+    setGlobalValidatorVoteEmpty(): void;
+    getGlobalValidatorVoteEmpty(): number | undefined;
     setGlobalInputCount(inputCount: number): void;
     getGlobalInputCount(): number;
     setGlobalOutputCount(outputCount: number): void;

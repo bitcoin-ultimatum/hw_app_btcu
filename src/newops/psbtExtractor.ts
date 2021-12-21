@@ -35,5 +35,7 @@ export function extract(psbt: PsbtV2): Buffer {
   }
   tx.writeSlice(witnessWriter.buffer());
   tx.writeUInt32(psbt.getGlobalFallbackLocktime() ?? 0);
+  tx.writeUInt8(psbt.getGlobalValidatorRegEmpty() ?? 0);
+  tx.writeUInt8(psbt.getGlobalValidatorVoteEmpty() ?? 0);
   return tx.buffer();
 }

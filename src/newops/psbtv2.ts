@@ -79,6 +79,24 @@ export class PsbtV2 {
       0
     );
   }
+  ////////BTCU////////
+    setGlobalValidatorRegEmpty() {
+        this.setGlobal(psbtGlobal.TX_VALIDATOR_REG, uint8(0));
+    }
+    getGlobalValidatorRegEmpty(): number | undefined {
+        return this.getGlobalOptional(psbtGlobal.TX_VALIDATOR_REG)?.readUInt8(
+            0
+        );
+    }
+    setGlobalValidatorVoteEmpty() {
+        this.setGlobal(psbtGlobal.TX_VALIDATOR_VOTE, uint8(0));
+    }
+    getGlobalValidatorVoteEmpty(): number | undefined {
+        return this.getGlobalOptional(psbtGlobal.TX_VALIDATOR_VOTE)?.readUInt8(
+            0
+        );
+    }
+    ///////////////////
   setGlobalInputCount(inputCount: number) {
     this.setGlobal(psbtGlobal.INPUT_COUNT, varint(inputCount));
   }
@@ -555,6 +573,11 @@ function set(
 ) {
   const key = new Key(keyType, keyData);
   map.set(key.toString(), value);
+}
+function uint8(n: number): Buffer {
+    const b = Buffer.alloc(1);
+    b.writeUInt8(n, 0);
+    return b;
 }
 function uint32LE(n: number): Buffer {
   const b = Buffer.alloc(4);

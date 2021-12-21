@@ -32,7 +32,7 @@ import { psbtIn, PsbtV2 } from "./newops/psbtv2";
 import { serializeTransaction } from "./serializeTransaction";
 import type { Transaction } from "./types";
 
-const newSupportedApps = ["Bitcoin", "Bitcoin Test"];
+const newSupportedApps = ["Bitcoin", "Bitcoin Test", "BTCU"];
 
 export function canSupportApp(appAndVersion: AppAndVersion): boolean {
   return (
@@ -210,6 +210,8 @@ export default class BtcNew {
       // The signer will assume locktime 0 if unset
       psbt.setGlobalFallbackLocktime(arg.lockTime);
     }
+    psbt.setGlobalValidatorRegEmpty();
+    psbt.setGlobalValidatorVoteEmpty();
     psbt.setGlobalInputCount(inputCount);
     psbt.setGlobalPsbtVersion(2);
     psbt.setGlobalTxVersion(2);

@@ -46,10 +46,12 @@ export function serializeTransaction(transaction, skipWitness, timestamp, additi
     var outputBuffer = serializeTransactionOutputs(transaction);
     if (typeof transaction.outputs !== "undefined" &&
         typeof transaction.locktime !== "undefined") {
+        var validatorEmptyBuf = new Buffer([0x00, 0x00]);
         outputBuffer = Buffer.concat([
             outputBuffer,
             (useWitness && transaction.witness) || Buffer.alloc(0),
             transaction.locktime,
+            validatorEmptyBuf,
             transaction.nExpiryHeight || Buffer.alloc(0),
             transaction.extraData || Buffer.alloc(0),
         ]);
