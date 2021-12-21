@@ -1,8 +1,7 @@
 require('babel-polyfill');
-//"ledgerhqbtcu": "git+git@github.com:dim4egster/hw_app_btcu.git",
 const AppBtc = require("ledgerhqbtcu/lib").default;
-//const AppBtc = require("/Users/dim4egster/work/ledger/hw-app-btcu/ledgerjs/packages/hw-app-btc/lib").default;
-//const AppBtc = require("@codewarriorr/hw-app-btcv").default;
+//for local test importing
+//const AppBtc = require("/Users/<username>/work/ledger/hw-app-btcu/ledgerjs/packages/hw-app-btc/lib").default;
 const TransportNodeHid = require("@ledgerhq/hw-transport-node-hid").default;
 //const TransportWebUsb = require("@ledgerhq/hw-transport-webusb").default;
 //const TransportU2F = require("@ledgerhq/hw-transport-u2f").default;
